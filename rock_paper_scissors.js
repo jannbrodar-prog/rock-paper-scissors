@@ -14,15 +14,13 @@ console.log("Hello!");
 function getComputerChoice() {
   let number = Math.random() * 3;
   if (number < 1) {
-    return "Rock";
+    return "rock";
   } else if (number >= 2) {
-    return "Paper";
+    return "paper";
   } else {
-    return "Scissors";
+    return "scissors";
   }
 }
-
-//console.log(getComputerChoice());
 
 // next we need the human input
 // PSEUDOCODE
@@ -33,9 +31,8 @@ function getHumanChoice() {
   let userChoice = prompt(
     "Choose between Rock, Paper and Scissors. Please enter your choice"
   );
-  return userChoice;
+  return userChoice.toLowerCase();
 }
-//console.log(getHumanChoice());
 
 // Now we need to create the logic to play a single round
 // PSEUDOCODE
@@ -46,59 +43,35 @@ function getHumanChoice() {
 // representing the round winner, such as: “You lose! Paper beats Rock”
 // Increment the humanScore or computerScore variable based on the round winner.
 
-// function playRound(humanChoice, computerChoice) {
-//   if (humanChoice == computerChoice) {
-//     return "Its a tie!";
-//   } else if (humanChoice == "Rock" && computerChoice == "Paper") {
-//     return "You lose, Paper beats Rock!";
-//   } else if (humanChoice == "Rock" && computerChoice == "Scissors") {
-//     return "You win, Rock beats Scissors!";
-//   } else if (humanChoice == "Paper" && computerChoice == "Rock") {
-//     return "You win, Paper beats Rock!";
-//   } else if (humanChoice == "Paper" && computerChoice == "Scissors") {
-//     return "You lose, Scissors beats Paper!";
-//   } else if (humanChoice == "Scissors" && computerChoice == "Rock") {
-//     return "You lose, Rock beats Scissors!";
-//   } else if (humanChoice == "Scissors" && computerChoice == "Paper") {
-//     return "You win, Scissors beats Paper!";
-//   } else {
-//     return "You entered an invalid word.";
-//   }
-// }
-
-// const humanSelection = getHumanChoice();
-// const computerSelection = getComputerChoice();
-
-// console.log(playRound(humanSelection, computerSelection));
-
 // Write the logic to play the entire game
 //PSEUDOCODE
 // Declare function playGame
 // Move your playRound function and score variables
 // so that they’re declared inside of the new playGame function
 // Play 5 rounds by calling playRound 5 times
+
 function playGame() {
   let humanScore = 0;
   let computerScore = 0;
   function playRound(humanChoice, computerChoice) {
   if (humanChoice == computerChoice) {
     return "Its a tie!";
-  } else if (humanChoice == "Rock" && computerChoice == "Paper") {
+  } else if (humanChoice == "rock" && computerChoice == "paper") {
     computerScore++;
     return "You lose, Paper beats Rock!";
-  } else if (humanChoice == "Rock" && computerChoice == "Scissors") {
+  } else if (humanChoice == "rock" && computerChoice == "scissors") {
     humanScore++;
     return "You win, Rock beats Scissors!";
-  } else if (humanChoice == "Paper" && computerChoice == "Rock") {
+  } else if (humanChoice == "paper" && computerChoice == "rock") {
     humanScore++;
     return "You win, Paper beats Rock!";
-  } else if (humanChoice == "Paper" && computerChoice == "Scissors") {
+  } else if (humanChoice == "paper" && computerChoice == "scissors") {
     computerScore++;
     return "You lose, Scissors beats Paper!";
-  } else if (humanChoice == "Scissors" && computerChoice == "Rock") {
+  } else if (humanChoice == "scissors" && computerChoice == "rock") {
     computerScore++;
     return "You lose, Rock beats Scissors!";
-  } else if (humanChoice == "Scissors" && computerChoice == "Paper") {
+  } else if (humanChoice == "scissors" && computerChoice == "paper") {
     humanScore++;
     return "You win, Scissors beats Paper!";
   } else {
@@ -106,38 +79,22 @@ function playGame() {
   }
 }
 
-let humanSelection = getHumanChoice();
-let computerSelection = getComputerChoice();
+// Here is the for loop calling the playRound 5 times
 
-let humanSelection2 = getHumanChoice();
-let computerSelection2 = getComputerChoice();
-
-let humanSelection3 = getHumanChoice();
-let computerSelection3 = getComputerChoice();
-
-let humanSelection4 = getHumanChoice();
-let computerSelection4 = getComputerChoice();
-
-let humanSelection5 = getHumanChoice();
-let computerSelection5 = getComputerChoice();
-
+for(i = 1; i < 6; i++){
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+console.log("--------------------------------");
+console.log(`Round ${i} of 5`);
+console.log(`You chose : ${humanSelection}`);
+console.log(`Computer chose : ${computerSelection}`);
 console.log(playRound(humanSelection, computerSelection));
-console.log("Computer score is: " + computerScore);
-console.log("Your score is: " + humanScore);
+}
 
-console.log(playRound(humanSelection2, computerSelection2));
-console.log("Computer score is: " + computerScore);
-console.log("Your score is: " + humanScore);
+// This is the last part - the final score
 
-console.log(playRound(humanSelection3, computerSelection3));
-console.log("Computer score is: " + computerScore);
-console.log("Your score is: " + humanScore);
-
-console.log(playRound(humanSelection4, computerSelection4));
-console.log("Computer score is: " + computerScore);
-console.log("Your score is: " + humanScore);
-
-console.log(playRound(humanSelection5, computerSelection5));
+console.log("--------------------------------");
+console.log("The final score is:");
 console.log("Computer score is: " + computerScore);
 console.log("Your score is: " + humanScore);
 
